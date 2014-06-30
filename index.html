@@ -11,9 +11,26 @@
         
           function init() {
             var socket = new WebSocket("ws://echo.websocket.org");
-			alert("created socket");
+			//added by MarcoSabba
+			var wsStatus = socket.readyState;
+			var wsStatusString = "unknown";
+			switch(wsStatus){
+				case 0:
+					wsStatusString = "CONNECTING";
+					break;
+				case 1:
+					wsStatusString = "OPEN";
+					break;
+				case 2:
+					wsStatusString = "CLOSING";
+					break;
+				case 3:
+					wsStatusString = "CLOSED";
+					break;
+			}
+			alert("Websocket is: " + wsStatusString);
+			//end added by MarcoSabba
           }
-
           document.addEventListener("deviceready", init, false);
         </script>
     </body>

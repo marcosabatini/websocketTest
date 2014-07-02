@@ -9,7 +9,9 @@
 		testWebSocket(); 
 	}  
 	function testWebSocket(){
+		writeToScreen("Before creating websocket");
 		websocket = new WebSocket(wsUri); 
+		writeToScreen("After creating websocket");
 		websocket.onopen = function(evt) { onOpen(evt) }; 
 		websocket.onclose = function(evt) { onClose(evt) }; 
 		websocket.onmessage = function(evt) { onMessage(evt) }; 

@@ -32,8 +32,26 @@
 				wsStatusString = "CLOSED";
 				break;
 		}
-		alert("Websocket is: " + wsStatusString);
+		writeToScreen("Websocket is: " + wsStatusString);
+		
+		var supportsWebSockets = function() {
+			if ('WebSocket' in window) {
+				if (WebSocket.hasOwnProperty('onopen'))
+					return true;
+				else
+					return false;
+			} else {
+				return false;
+			}
+		}
+		writeToScreen("supports websockets? " + supportsWebSockets);
 		//end added by MarcoSabba
+		
+		var methods = [];
+		for (var m in websocket) {
+			methods.push(m);
+		}
+		writeToScreen(methods.join("<br>"));
 	}  
 	function onOpen(evt) { 
 		writeToScreen("CONNECTED"); 

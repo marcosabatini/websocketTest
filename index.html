@@ -19,7 +19,8 @@
 				return false;
 			}
 		}
-		writeToScreen("supports websockets? " + supportsWebSockets());
+		var websocketSupported = supportsWebSockets ? "TRUE" : "FALSE";
+		writeToScreen("supports websockets? " + websocketSupported);
 		
 		writeToScreen("Before creating websocket");
 		websocket = new WebSocket(wsUri); 

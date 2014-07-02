@@ -9,16 +9,19 @@
 		testWebSocket(); 
 	}  
 	function testWebSocket(){
-		var supportsWebSockets = function() {
-			if ('WebSocket' in window) {
-				if (WebSocket.hasOwnProperty('onopen'))
-					return true;
-				else
-					return false;
-			} else {
-				return false;
-			}
-		}
+		var supportsWebSockets = false;
+		if ('WebSocket' in window && WebSocket.hasOwnProperty('onopen'))
+			supportsWebSockets = true;
+		//var supportsWebSockets = function() {
+		//	if ('WebSocket' in window) {
+		//		if (WebSocket.hasOwnProperty('onopen'))
+		//			return true;
+		//		else
+		//			return false;
+		//	} else {
+		//		return false;
+		//	}
+		//}
 		var websocketSupported = supportsWebSockets ? "TRUE" : "FALSE";
 		writeToScreen("supports websockets? " + websocketSupported);
 		

@@ -19,7 +19,8 @@
 
     <!-- We'll include the Barcode plugin as an example -->
     <!-- <gap:plugin name="com.phonegap.plugins.barcodescanner" /> -->
-	<gap:plugin name="com.ququplay.websocket.websocket" version="0.1.0" />
+	<!-- <gap:plugin name="com.ququplay.websocket.websocket" version="0.1.0" /> -->
+	<gap:plugin name="com.ququplay.websocket.websocket"/>
 	
 
 	<!--

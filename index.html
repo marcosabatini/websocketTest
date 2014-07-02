@@ -2,7 +2,7 @@
 <meta charset="utf-8" />  
 <title>WebSocket Test</title>  
 <script language="javascript" type="text/javascript">  
-	var wsUri = "wss://echo.websocket.org/"; 
+	var wsUri = "ws://echo.websocket.org/"; 
 	var output;  
 	function init(){ 
 		output = document.getElementById("output"); 
@@ -14,6 +14,26 @@
 		websocket.onclose = function(evt) { onClose(evt) }; 
 		websocket.onmessage = function(evt) { onMessage(evt) }; 
 		websocket.onerror = function(evt) { onError(evt) }; 
+		
+		//added by MarcoSabba
+		var wsStatus = websocket.readyState;
+		var wsStatusString = "unknown";
+		switch(wsStatus){
+			case 0:
+				wsStatusString = "CONNECTING";
+				break;
+			case 1:
+				wsStatusString = "OPEN";
+				break;
+			case 2:
+				wsStatusString = "CLOSING";
+				break;
+			case 3:
+				wsStatusString = "CLOSED";
+				break;
+		}
+		alert("Websocket is: " + wsStatusString);
+		//end added by MarcoSabba
 	}  
 	function onOpen(evt) { 
 		writeToScreen("CONNECTED"); 

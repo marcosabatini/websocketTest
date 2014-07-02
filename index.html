@@ -1,6 +1,7 @@
 <!DOCTYPE html>  
 <meta charset="utf-8" />  
-<title>WebSocket Test</title>  
+<title>WebSocket Test</title>
+<script src="phonegap.js"></script>
 <script language="javascript" type="text/javascript">  
 	var wsUri = "ws://echo.websocket.org/"; 
 	var output;  
@@ -21,16 +22,6 @@
 		var supportsWebSockets = false;
 		if ('WebSocket' in window && websocket.hasOwnProperty('onopen'))
 			supportsWebSockets = true;
-		//var supportsWebSockets = function() {
-		//	if ('WebSocket' in window) {
-		//		if (WebSocket.hasOwnProperty('onopen'))
-		//			return true;
-		//		else
-		//			return false;
-		//	} else {
-		//		return false;
-		//	}
-		//}
 		var websocketSupported = supportsWebSockets ? "TRUE" : "FALSE";
 		writeToScreen("supports websockets? " + websocketSupported);
 		

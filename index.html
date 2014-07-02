@@ -9,8 +9,17 @@
 		testWebSocket(); 
 	}  
 	function testWebSocket(){
+		writeToScreen("Before creating websocket");
+		websocket = new WebSocket(wsUri); 
+		writeToScreen("After creating websocket");
+		websocket.onopen = function(evt) { onOpen(evt) }; 
+		websocket.onclose = function(evt) { onClose(evt) }; 
+		websocket.onmessage = function(evt) { onMessage(evt) }; 
+		websocket.onerror = function(evt) { onError(evt) }; 
+		
+		//added by MarcoSabba
 		var supportsWebSockets = false;
-		if ('WebSocket' in window && WebSocket.hasOwnProperty('onopen'))
+		if ('WebSocket' in window && websocket.hasOwnProperty('onopen'))
 			supportsWebSockets = true;
 		//var supportsWebSockets = function() {
 		//	if ('WebSocket' in window) {
@@ -25,15 +34,6 @@
 		var websocketSupported = supportsWebSockets ? "TRUE" : "FALSE";
 		writeToScreen("supports websockets? " + websocketSupported);
 		
-		writeToScreen("Before creating websocket");
-		websocket = new WebSocket(wsUri); 
-		writeToScreen("After creating websocket");
-		websocket.onopen = function(evt) { onOpen(evt) }; 
-		websocket.onclose = function(evt) { onClose(evt) }; 
-		websocket.onmessage = function(evt) { onMessage(evt) }; 
-		websocket.onerror = function(evt) { onError(evt) }; 
-		
-		//added by MarcoSabba
 		var wsStatus = websocket.readyState;
 		var wsStatusString = "unknown";
 		switch(wsStatus){

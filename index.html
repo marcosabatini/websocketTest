@@ -9,6 +9,18 @@
 		testWebSocket(); 
 	}  
 	function testWebSocket(){
+		var supportsWebSockets = function() {
+			if ('WebSocket' in window) {
+				if (WebSocket.hasOwnProperty('onopen'))
+					return true;
+				else
+					return false;
+			} else {
+				return false;
+			}
+		}
+		writeToScreen("supports websockets? " + supportsWebSockets);
+		
 		writeToScreen("Before creating websocket");
 		websocket = new WebSocket(wsUri); 
 		writeToScreen("After creating websocket");
@@ -36,24 +48,12 @@
 		}
 		writeToScreen("Websocket is: " + wsStatusString);
 		
-		var supportsWebSockets = function() {
-			if ('WebSocket' in window) {
-				if (WebSocket.hasOwnProperty('onopen'))
-					return true;
-				else
-					return false;
-			} else {
-				return false;
-			}
-		}
-		writeToScreen("supports websockets? " + supportsWebSockets);
-		//end added by MarcoSabba
-		
 		var methods = [];
 		for (var m in websocket) {
 			methods.push(m);
 		}
 		writeToScreen(methods.join("<br>"));
+		//end added by MarcoSabba
 	}  
 	function onOpen(evt) { 
 		writeToScreen("CONNECTED"); 
